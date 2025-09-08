@@ -1,5 +1,6 @@
 .vscode
-Submission/*.pdf
+.DS_Store
+*/*.pdf
 *.log
 *.aux
 *.out
