@@ -15,9 +15,11 @@ The **biosketch(es)** and **current and pending support** documents should be ge
 
 ## Compile into files
 ```
-bash compile.sh
+bash compile.sh [-v]
 ```
 The complied files will be in ``./Submission`` directory.
+
+parapmter -v is optional for output version control. For example, -v1.0 will add -v1.0 to all pdf files in the Submission folder.
 
 ## Updates in ``NSF 24-1``
 - Senior Personnel Documents & Current and Pending (Other) Support
