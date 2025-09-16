@@ -1,59 +1,57 @@
 \documentclass{NSF}
 
-\usepackage{longtable}
+% Encoding and fonts
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{latexsym}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{amsmath, amsthm, amssymb}
-\usepackage{amsfonts}
-\usepackage[format=plain,indention=0cm, font=small, labelfont=bf]{caption}
-\usepackage{fancyhdr}
-\usepackage[pdftex]{graphicx}
-\usepackage{lscape}
-\usepackage[T1]{fontenc}
-\usepackage{floatrow}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{tabularx}
-\usepackage{ragged2e}
-\usepackage{graphics,epsfig,graphicx,color}
-\graphicspath{{./Figures/}}
-\usepackage{subfigure}
-% include symbols package
-\usepackage{amssymb,latexsym}
-\usepackage[nocompress]{cite}
 
-
-% include setspace package
-\usepackage{setspace}
-
-% include ams math package
-\usepackage{amsmath}
-
-% include fonts package
-\usepackage{mathrsfs,amsfonts}
-
-% include ams theorem package
-\usepackage{amsthm,amsxtra}
-
-% include the showkeys package
-%\usepackage{showkeys}
-\usepackage[final]{showkeys}
-
-% include the stmaryrd package
-% that contains many math symbols
+% Core math
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools} % optional but helpful
 \usepackage{stmaryrd}
+\usepackage{amsxtra}   % only if you actually use it
 
-% subfiles
+% Figures and graphics
+\usepackage{graphicx}
+\usepackage[dvipsnames,table]{xcolor} % 'table' for colortbl
+\usepackage{caption}
+\usepackage{subcaption} % replaces obsolete subfigure
+% \usepackage{floatrow} % comment out unless you truly need it, then review caption options
+\usepackage{pdflscape}  % replaces lscape
+\graphicspath{{./Figures/}}
+
+% Tables and layout
+\usepackage{array, tabularx, colortbl}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{multirow}
+\usepackage{ragged2e}
+
+% Lists
+\usepackage{enumitem} % prefer over enumerate
+
+% Misc
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\usepackage{extarrows}
+\usepackage{verbatim}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage[nocompress]{cite}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{atbegshi}
-\usepackage{subfiles} % Best loaded last in the preamble
+\usepackage{subfiles} % keep near end
+\usepackage[final]{showkeys} % keep last if you want it disabled
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% define theorem type of commands
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors you defined
+\definecolor{colorBlue}{RGB}{0,114,178}
+\definecolor{colorOrange}{RGB}{230,159,0}
+\definecolor{colorSkyBlue}{RGB}{86,180,233}
+\definecolor{colorPurple}{RGB}{204,121,167}
+\definecolor{colorYellowGreen}{RGB}{102,166,30}
+\definecolor{colorYellow}{RGB}{240,228,66}
+\definecolor{colorBlack}{RGB}{0,0,0}
 
+% Theorem styles
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
@@ -70,20 +68,16 @@
 \newtheorem{problem}[theorem]{Problem} 
 \newtheorem{notation}{Notation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% customized theorems and lemmas numbering
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Custom theorem wrappers
 \newtheorem{innercustomthm}{Theorem}
 \newenvironment{customthm}[1]
-  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
-  {\endinnercustomthm}
-  
-  
+{\renewcommand\theinnercustomthm{#1}\innercustomthm}
+{\endinnercustomthm}
 \newtheorem{innercustomlem}{Lemma}
 \newenvironment{customlem}[1]
-  {\renewcommand\theinnercustomlem{#1}\innercustomlem}
-  {\endinnercustomlem}
+{\renewcommand\theinnercustomlem{#1}\innercustomlem}
+{\endinnercustomlem}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % define some simple, commonly-used commands 
@@ -214,24 +208,29 @@
 \newcommand{\vari}[1]{\var\negthinspace\left[#1\right]}
 \newcommand{\abs}[1]{|#1|}
 \newcommand{\norm}[1]{\|#1\|}
-%\newcommand{\E}[1]{\bbE\!\left[#1\right]}
+\newcommand{\E}[1]{\bbE\!\left[#1\right]}
 \newcommand{\aver}[1]{\langle {#1} \rangle}
 \newcommand{\Baver}[1]{\Big\langle {#1} \Big\rangle}
 \newcommand{\pn}{\par\noindent}
 \newcommand{\vpn}{\vspace{0.1cm}\par\noindent}
 
+% Column type for centering
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Command to create colored cells
+\newcommand{\colorcell}[1]{\cellcolor{#1}\phantom{x}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color Text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{color}
-\definecolor{RED}{rgb}{1,0,0}
-\definecolor{BLUE}{rgb}{0,0,1}
-\definecolor{White}{rgb}{1,1,1}
-\providecommand{\TODO}[1]{{\protect\color{red}\noindent {\bf [TODO]}\emph{#1} {\bf [/TODO]}}}
-\providecommand{\todo}[1]{{\protect\color{red}\noindent {\bf [TODO]}\emph{#1} {\bf [/TODO]}}}
-\providecommand{\CHECK}[1]{{\protect\color{blue} #1 (check) }}
-\providecommand{\DummyText}[1]{{\protect\color{white} #1}}
-
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{white}{rgb}{1,1,1}
+\providecommand{\todo}[1]{{\protect\color{red}\noindent {\bf [todo]}~\emph{#1} {\bf [/todo]}}}
+\providecommand{\cmnt}[1]{{\protect\color{blue}\noindent {\bf [cmnt]}~\emph{#1} {\bf [/cmnt]}}}
+\providecommand{\chck}[1]{{\protect\color{blue} #1 (check) }}
+\providecommand{\dummy}[1]{{\protect\color{white} #1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

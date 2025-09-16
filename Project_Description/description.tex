@@ -17,6 +17,8 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\doctitle{DOC TITLE}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
@@ -43,7 +45,7 @@ In this project, ...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Research Objective 1}
-In this sub-project, the PI ... see~\cite{knuth2014art} and references therein.
+In this sub-project, the PI ... see~\cite{allen2025Cardsim} and references therein.
 
 \noindent {\bf{\underline{Expected Outcome}:}}
 
@@ -90,19 +92,14 @@ In this sub-project, the PI ... see~\cite{knuth2014art} and references therein.
 \newpage
 
 %%%%%%%%%%%% References Cited %%%%%%%%%%%%%%%%%%%%
-%
+%	Only for compiling the description.tex alone
 %
 \AtBeginShipout{%
-\AtBeginShipoutDiscard
+	\AtBeginShipoutDiscard
 }
-\renewcommand\refname{REFERENCES CITED}
+\renewcommand\refname{References Cited}
 \bibliography{../references}
-% Any referencing style is applicable.
 \bibliographystyle{ieeetr}
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

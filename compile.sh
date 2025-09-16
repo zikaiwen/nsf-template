@@ -47,11 +47,11 @@ fi
 rm -rf *.aux *.blg *.out *.log *.bbl *.bib
 cd ..
 
-# References Cited
-echo "Building References Cited..."
+# References
+echo "Building References..."
 cd References_Cited
 pdflatex --output-directory=../Submission references.tex
-bibtex                      ../Submission/references.aux  # Fixed typo: Subsmission -> Submission
+bibtex                      ../Submission/references.aux  
 pdflatex --output-directory=../Submission references.tex
 pdflatex --output-directory=../Submission references.tex
 if [ -n "$VERSION_SUFFIX" ]; then
